@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.text.html.parser.Entity;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/users")
 public class UserResources {
