@@ -2,8 +2,8 @@ package com.systemmvp.sysorders.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_category")
@@ -15,7 +15,8 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
-//    private List<Product> products = new ArrayList<>();
+    @Transient // impede que o JPA tente traduzir
+    private Set<Product> products = new HashSet<>();
 
     public Category() {
     }
@@ -27,6 +28,7 @@ public class Category implements Serializable {
     }
 
     public Long getId() {
+
         return id;
     }
 
@@ -42,9 +44,9 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-//    public List<Product> getProducts() {
-//        return products;
-//    }
+    public Set<Product> getProducts() {
+        return products;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -60,4 +62,5 @@ public class Category implements Serializable {
     public int hashCode() {
         return getId() != null ? getId().hashCode() : 0;
     }
+
 }

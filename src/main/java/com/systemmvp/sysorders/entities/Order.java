@@ -6,6 +6,8 @@ import com.systemmvp.sysorders.entities.enums.OrderStatus;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_order")
@@ -24,6 +26,8 @@ public class Order implements Serializable {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+//    private List<Product> items = new ArrayList<>();
 
     public Order() {
 
